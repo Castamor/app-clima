@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --error: theme(colors.red.600);
+    --azul: theme(colors.blue.500);
+    --amanecer: rgb(33,103,143);
+    --dia: rgb(125,211,252);
+    --atardecer: rgb(164,43,43);
+    --noche: rgb(21,42,102);
+}
+
+.altura {
+    height: 100dvh;
+}
+
+.transicion {
+    transition: all .3s;
+}
+
+.Amanecer {
+    background: var(--amanecer);
+}
+
+.Día {
+    background: var(--dia);
+}
+
+.Atardecer {
+    background: var(--atardecer);
+}
+
+.Noche {
+    background: var(--noche);
+}
+
+.loading {
+    width: 17px;
+    height: 15px;
+    border-radius: 2px;
+    --g1:conic-gradient(from  90deg at left   3px top   3px,var(--azul) 90deg,var(--azul) 0);
+    background:var(--g1),var(--g1),var(--g1);
+    background-position:left,center,right;
+    background-repeat:no-repeat;
+    animation:animacion 1s infinite;
+}
+
+@keyframes animacion {
+    0%   {background-size:4px 50% ,4px 50% ,4px 50%}
+    25%  {background-size:4px 100%,4px 50% ,4px 50%}
+    50%  {background-size:4px 50% ,4px 100%,4px 50%}
+    75%  {background-size:4px 50% ,4px 50% ,4px 100%}
+    100% {background-size:4px 50% ,4px 50% ,4px 50%}
+}
+
+.titulo {
+    text-shadow: 0 1.5px 0 #c1c1c1, 0 2px 1px rgba(0,0,0,.2), 0 0 0 rgba(0,0,0,0);
+}
+
+.brillo {
+    filter: brightness(.85);
+}
+
+/* Animaciones */
+
+.contenedor {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    animation: fadeIn .5s linear;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+.resultados {
+    animation: izqDer 10s linear infinite;
+}
+
+.animacionIzqDer {
+    animation: izqDer 10s linear infinite, fadeIn 1s linear;
+}
+
+@keyframes izqDer {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1.5%);
+    }
+
+    75% {
+        transform: translateX(1.5%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.satelite {
+    animation: fadeIn 1s linear;
+}
+
+.paraguas {
+    animation: paraguas 120s linear alternate infinite, fadeIn 1s 1 linear;
+    margin: 0 0 0 0;
+}
+
+.paraguasDos {
+    animation: paraguas 90s linear alternate-reverse infinite, fadeIn 1s 1 linear;
+    margin: 0 0 0 0;
+}
+
+.paraguasTres {
+    animation: paraguas 140s ease-out alternate infinite, fadeIn 1s 1 linear;
+    margin: 0 0 0 0;
+}
+
+@keyframes paraguas {
+    to {
+        margin: 0 0 0 calc(100% - 128px);
+    }
+}
+
+.brilloEstrellasv1 {
+    animation: estrellas 5s linear infinite, fadeIn 1s linear;
+}
+
+.brilloEstrellasv2 {
+    animation: estrellas 8s linear infinite, fadeIn 1s linear;
+}
+
+.brilloEstrellasv3 {
+    animation: estrellas 3s linear infinite, fadeIn 1s linear;
+}
+
+@keyframes estrellas {
+
+    from {
+        filter: brightness(.8);
+        transform: scale(1);
+    }
+    
+    50% {
+        filter: brightness(1.5);
+        transform: scale(1.1);
+    }
+    
+    to {
+        transform: scale(1);
+        filter: brightness(.8);
+    }
+}
+
+.nubesMovimiento {
+    animation: nubes 4s linear alternate infinite, fadeIn 1s linear;
+}
+
+.nubesMovimientov2 {
+    animation: nubes 6s linear alternate-reverse infinite, fadeIn 1s linear;
+}
+
+@keyframes nubes {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(10%);
+    }
+}
+
+.pajaros {
+    animation: pajaros 2s alternate infinite;
+}
+
+
+.pajarosv2 {
+    animation: pajaros 3s alternate-reverse infinite;
+}
+
+@keyframes pajaros {
+    to {
+        transform: rotate(-15deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ToolTip */
+[data-tooltip]:before,
+[data-tooltip]:after {
+    line-height: 1;
+    font-size: .9em;
+    pointer-events: none;
+    position: absolute;
+    box-sizing: border-box;
+    display: none;
+    opacity: 0;
+    animation: fadeIn 1ss;
+}
+
+[data-tooltip]:before {
+    content: "";
+    border: 7px solid transparent;
+    z-index: 100;
+}
+
+[data-tooltip]:after {
+    content: attr(data-tooltip);
+    text-align: center;
+    white-space: nowrap;
+    padding: 8px;
+    border-radius: 5px;
+    background: var(--error);
+    color: white;
+    z-index: 99;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    display: block;
+    opacity: 1;
+}
+
+[data-tooltip]:not([data-flow])::before,
+[data-tooltip][data-flow="top"]::before {
+    bottom: 98%;
+    border-bottom-width: 0;
+    border-top-color: var(--error);
+}
+
+[data-tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::after {
+    bottom: calc(100% + 5px);
+}
+
+[data-tooltip]:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::before,
+[data-tooltip][data-flow="top"]::after {
+    left: 50%;
+    -webkit-transform: translate(-50%, 3px);
+            transform: translate(-50%, 3px);
+}
+
+[data-tooltip=""]::after, [data-tooltip=""]::before {
+    display: none !important;
+}
+
+/* Mejoran la renderización de los SVG */
+.icono {
+    shape-rendering:geometricPrecision;
+    text-rendering:geometricPrecision;
+    fill-rule:evenodd;
+    clip-rule:evenodd
+}
+
+/* Eliminar la flecha al agregar un datalist al un input tipo texto */
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    z-index: -100;
+}
