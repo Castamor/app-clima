@@ -55,7 +55,7 @@ export const climas = [
     { id: 'CloudsNight', meteorologia: 'Nublado', icono: LunaNubes }
 ]
 
-export const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+export const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 
 export const ciclos = {
     amanecer: 'Amaneciendo',

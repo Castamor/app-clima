@@ -1,4 +1,5 @@
 import { obtenerCielo } from '../helpers/obtenerCielo'
+import { obtenerDia } from '../helpers/obtenerDia'
 import { obtenerMeteorologia } from '../helpers/obtenerMeteorologia.js'
 export const guardarInformacion = ({ respuesta, setClima }) => {
     const { estado, climaActual, climaPrevisto } = respuesta
@@ -12,8 +13,6 @@ export const guardarInformacion = ({ respuesta, setClima }) => {
 
     const cielo = obtenerCielo(horaActual, amanecer, atardecer)
     const { icono, meteorologia } = obtenerMeteorologia(idIcono, nombreClima, cielo)
-
-    const diasPrevistos = climaPrevisto.list.filter((_, index) => (index + 1) % 8 === 0)
 
     const infoClimaActual = {
         ciudad,
@@ -31,5 +30,24 @@ export const guardarInformacion = ({ respuesta, setClima }) => {
         descripcion
     }
 
-    console.log(infoClimaActual)
+    const infoDiasPrevistos = climaPrevisto.list.filter((_, index) => (index + 1) % 8 === 0).map(datos => {
+        const { dt } = datos
+        const { temp } = datos.main
+        const { icon, main } = datos.weather[0]
+
+        const dia = obtenerDia(dt)
+        const { icono, meteorologia } = obtenerMeteorologia(icon, main, cielo)
+
+        return {
+            dia,
+            icono,
+            temp: Math.round(temp),
+            meteorologia
+        }
+    })
+
+    return {
+        infoClimaActual,
+        infoDiasPrevistos
+    }
 }
