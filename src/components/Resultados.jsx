@@ -12,8 +12,8 @@ const Resultados = () => {
         <FondoBlur
             className={
                 !noCabeContenido
-                    ? 'sm:block p-0 pt-5'
-                    : 'sm:block p-0 pt-5 mb-10'}>
+                    ? 'sm:block p-0 pt-5 mt-5'
+                    : 'sm:block p-0 pt-5 mt-5 mb-10'}>
             <h3 className='text-center font-bold mb-2 uppercase text-2xl'>{meteorologia}</h3>
             <div className='w-1/3 sm:w-1/3 mx-auto'><Icono /></div>
             <p className='text-center text-sm font-medium mt-1.5'>{descripcion.slice(0, 1).toUpperCase() + descripcion.slice(1)}</p>

@@ -105,7 +105,7 @@ const Formulario = () => {
                     onChange={handleChange}
                     className="w-full bg-white/10 p-3 rounded-xl focus-visible:outline-none placeholder:text-sm font-semibold"
                 />
-                {loading && <div className='absolute top-[14px] bottom-0 right-10 loading'></div>}
+                {loading && <div className='absolute top-4 bottom-0 right-10 loading'></div>}
 
                 <button id="botonFormulario" type="submit" title='Buscar clima' className='absolute right-0 top-0 bottom-0 text-lg pl-2.5 pr-2.5 rounded-tr-xl rounded-br-xl focus-visible:outline-none'> <CgSearch/> </button>
             </div>
