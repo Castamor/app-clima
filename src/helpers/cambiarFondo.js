@@ -8,7 +8,7 @@ export const cambiarFondo = (ciclo = NADA, clima, setClima) => {
 
     if (ciclo === NADA) {
         ciclo = obtenerCicloDelCielo()
-        body.add(ciclo)
+        // body.add(ciclo)
         setClima({
             ...clima,
             ciclo
@@ -32,6 +32,6 @@ export const cambiarFondo = (ciclo = NADA, clima, setClima) => {
         })
     }
 
-    body.add(ciclo)
+    // body.add(ciclo)
     body.add('transicion')
 }

@@ -11,6 +11,21 @@
     --noche: rgb(21,42,102);
 }
 
+body {
+    background-color: #0b0b1e;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(230.91, 67%, 20%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(221.38, 75%, 14.000000000000002%) 0, transparent 55%);
+}
+
+.fondo-blur {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
 .altura {
     height: 100dvh;
 }
@@ -39,7 +54,7 @@
     width: 17px;
     height: 15px;
     border-radius: 2px;
-    --g1:conic-gradient(from  90deg at left   3px top   3px,white 90deg,white 0);
+    --g1:conic-gradient(from  90deg at left   3px top   3px,var(--azul) 90deg,var(--azul) 0);
     background:var(--g1),var(--g1),var(--g1);
     background-position:left,center,right;
     background-repeat:no-repeat;
