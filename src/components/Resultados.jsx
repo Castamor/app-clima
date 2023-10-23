@@ -1,5 +1,5 @@
 import useClimaProvider from '../hooks/useClimaProvider'
-import FondoBlanco from './FondoBlanco'
+import FondoBlur from './FondoBlur'
 import { HumedadIcono, TemperaturaIcono, UbicacionIcono } from './Iconos'
 
 const Resultados = () => {
@@ -9,7 +9,7 @@ const Resultados = () => {
 
     return (
 
-        <FondoBlanco
+        <FondoBlur
             className={
                 !noCabeContenido
                     ? 'sm:block p-0 pt-5'
@@ -44,7 +44,7 @@ const Resultados = () => {
                     </div>
                 </div>
             </div>
-        </FondoBlanco>
+        </FondoBlur>
     )
 }
 
