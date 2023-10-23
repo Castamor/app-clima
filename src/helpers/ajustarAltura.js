@@ -6,8 +6,10 @@ export const ajustarAltura = setNoCabeContenido => {
     if (alturaContenido > alturaPantalla) {
         setNoCabeContenido(true)
         contenido.remove('h-screen')
+        contenido.remove('altura')
     } else {
         setNoCabeContenido(false)
         contenido.add('h-screen')
+        contenido.add('altura')
     }
 }

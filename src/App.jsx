@@ -19,12 +19,11 @@ function App () {
 
     return (
         <>
-            <main id='contenido' className="z-10 w-full sm:w-fit mx-auto">
+            <main id='contenido' className="z-10">
                 <Formulario />
                 {infoError && <NoDatos />}
                 {clima.contenido && <Resultados />}
             </main>
-            <Fondo />
         </>
     )
 }

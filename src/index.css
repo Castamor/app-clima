@@ -39,7 +39,7 @@
     width: 17px;
     height: 15px;
     border-radius: 2px;
-    --g1:conic-gradient(from  90deg at left   3px top   3px,var(--azul) 90deg,var(--azul) 0);
+    --g1:conic-gradient(from  90deg at left   3px top   3px,white 90deg,white 0);
     background:var(--g1),var(--g1),var(--g1);
     background-position:left,center,right;
     background-repeat:no-repeat;
@@ -65,10 +65,14 @@
 /* Animaciones */
 
 .contenedor {
-    width: min(1200px, 90%);
+    width: min(600px, 90%);
     margin: 0 auto;
     animation: fadeIn .5s linear;
 }
+
+.shake-horizontal{-webkit-animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both;animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both}
+
+ @-webkit-keyframes shake-horizontal{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%{-webkit-transform:translateX(10px);transform:translateX(10px)}80%{-webkit-transform:translateX(8px);transform:translateX(8px)}90%{-webkit-transform:translateX(-8px);transform:translateX(-8px)}}@keyframes shake-horizontal{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%{-webkit-transform:translateX(10px);transform:translateX(10px)}80%{-webkit-transform:translateX(8px);transform:translateX(8px)}90%{-webkit-transform:translateX(-8px);transform:translateX(-8px)}}
 
 @keyframes fadeIn {
     from {
