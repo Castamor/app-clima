@@ -12,10 +12,10 @@
 }
 
 body {
-    background-color: #0b0b1e;
+    background-color: #0c0c36;
     background-image: 
-        radial-gradient(at 47% 33%, hsl(230.91, 67%, 20%) 0, transparent 59%), 
-        radial-gradient(at 82% 65%, hsl(221.38, 75%, 14.000000000000002%) 0, transparent 55%);
+        radial-gradient(at 47% 33%, hsl(231, 77%, 24%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(248, 81%, 23%) 0, transparent 55%);
 }
 
 .fondo-blur {
