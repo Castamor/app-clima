@@ -93,7 +93,7 @@ const Formulario = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label id="label" htmlFor="ciudad" className="ml-1 font-semibold text-white text-sm" > Escribe una ciudad</label>
+            <label id="label" htmlFor="ciudad" className="ml-1 font-semibold text-white mb-1 block" > Escribe una ciudad</label>
 
             <div className='relative'>
                 <input
@@ -103,7 +103,7 @@ const Formulario = () => {
                     list="opciones"
                     placeholder='Consultar el clima en...'
                     onChange={handleChange}
-                    className="border-2 border-white rounded-xl p-2 w-full bg-white/10 text-white focus-visible:outline-none placeholder:text-sm font-semibold"
+                    className="rounded-xl p-3 w-full bg-white/10 text-white focus-visible:outline-none placeholder:text-sm font-semibold"
                 />
 
                 {loading && <div className='absolute top-[14px] bottom-0 right-10 loading'></div>}
