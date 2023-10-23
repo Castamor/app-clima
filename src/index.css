@@ -18,14 +18,6 @@ body {
         radial-gradient(at 82% 65%, hsl(248, 81%, 23%) 0, transparent 55%);
 }
 
-.fondo-blur {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
 .altura {
     height: 100dvh;
 }
@@ -82,7 +74,10 @@ body {
 .contenedor {
     width: min(600px, 90%);
     margin: 0 auto;
-    animation: fadeIn .5s linear;
+}
+
+.animacion {
+    animation: fadeIn .35s linear;
 }
 
 .shake-horizontal{-webkit-animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both;animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both}

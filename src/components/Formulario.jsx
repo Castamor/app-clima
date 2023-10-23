@@ -92,7 +92,7 @@ const Formulario = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='animacion'>
             <label id="label" htmlFor="ciudad" className="ml-1 font-semibold mb-1 block" > Escribe una ciudad</label>
 
             <div className='relative'>
