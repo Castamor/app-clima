@@ -6,7 +6,6 @@ const ClimaProvider = ({ children }) => {
     const [inputCiudadInvalido, setInputCiudadInvalido] = useState(false)
     const [infoError, setInfoError] = useState(false)
     const [hayInfo, setHayInfo] = useState(false)
-    const [noCabeContenido, setNoCabeContenido] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const [datos, setDatos] = useState({
@@ -14,16 +13,7 @@ const ClimaProvider = ({ children }) => {
         pais: ''
     })
 
-    const [clima, setClima] = useState({
-        icono: '',
-        ciudad: '',
-        estado: '',
-        temp: 0,
-        sensacion: 0,
-        humedad: 0,
-        meteorologia: 'Despejado',
-        descripcion: '',
-        ciclo: '',
+    const [infoClima, setInfoClima] = useState({
         contenido: false
     })
 
@@ -36,14 +26,12 @@ const ClimaProvider = ({ children }) => {
                 setInfoError,
                 hayInfo,
                 setHayInfo,
+                loading,
+                setLoading,
                 datos,
                 setDatos,
-                clima,
-                setClima,
-                noCabeContenido,
-                setNoCabeContenido,
-                loading,
-                setLoading
+                infoClima,
+                setInfoClima
             }}
         >
             {children}

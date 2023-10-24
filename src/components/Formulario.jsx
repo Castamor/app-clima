@@ -3,7 +3,6 @@ import useClimaProvider from '../hooks/useClimaProvider'
 
 import { consultaAPI } from '../services/consultaAPI'
 import { guardarInformacion } from '../services/guardarInformacion'
-import { ajustarAltura } from '../helpers/ajustarAltura'
 
 import { paises, generarAutocompletado } from '../data'
 import { NADA } from '../constant/constantes'
@@ -14,29 +13,25 @@ const Formulario = () => {
     const {
         setInputCiudadInvalido,
         setInfoError,
-        datos,
-        setDatos,
         hayInfo,
         setHayInfo,
-        clima,
-        setClima,
         loading,
         setLoading,
-        setNoCabeContenido
+        datos,
+        setDatos,
+        setInfoClima
     } = useClimaProvider()
 
     useEffect(generarAutocompletado, [])
     useEffect(() => setHayInfo(false), [datos.ciudad])
-    useEffect(() => ajustarAltura(setNoCabeContenido), [clima.contenido])
 
     const handleChange = e => {
         const valor = e.target.value.trim()
         const codigo = paises.filter(pais => (pais.ciudades).includes(valor))[0]?.codigo
 
         setDatos({
-            ...datos,
-            pais: codigo || '',
-            [e.target.id]: valor
+            [e.target.id]: valor,
+            pais: codigo || ''
         })
     }
 
@@ -71,24 +66,15 @@ const Formulario = () => {
                 ...datos,
                 ciudad: ''
             })
-            setClima({
-                ...clima,
-                icono: '',
-                ciudad: '',
-                estado: '',
-                temp: 0,
-                tempMin: 0,
-                tempMax: 0,
-                descripcion: '',
+            setInfoClima({
                 contenido: false
             })
             return
         }
 
         setHayInfo(true)
-        setInfoError('')
-        guardarInformacion({ respuesta, setClima })
-        ajustarAltura(setNoCabeContenido)
+        setInfoError(false)
+        guardarInformacion({ respuesta, setInfoClima })
     }
 
     return (
@@ -98,7 +84,6 @@ const Formulario = () => {
             <div className='relative'>
                 <input
                     id="ciudad"
-                    value={datos.ciudad}
                     type="text"
                     list="opciones"
                     placeholder='Consultar el clima en...'

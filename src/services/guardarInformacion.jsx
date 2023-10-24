@@ -1,7 +1,8 @@
 import { obtenerCielo } from '../helpers/obtenerCielo'
 import { obtenerDia } from '../helpers/obtenerDia'
 import { obtenerMeteorologia } from '../helpers/obtenerMeteorologia.js'
-export const guardarInformacion = ({ respuesta, setClima }) => {
+
+export const guardarInformacion = ({ respuesta, setInfoClima }) => {
     const { estado, climaActual, climaPrevisto } = respuesta
 
     // Extraer información
@@ -46,8 +47,9 @@ export const guardarInformacion = ({ respuesta, setClima }) => {
         }
     })
 
-    return {
+    setInfoClima({
         infoClimaActual,
-        infoDiasPrevistos
-    }
+        infoDiasPrevistos,
+        contenido: true
+    })
 }
