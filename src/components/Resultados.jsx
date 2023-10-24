@@ -1,6 +1,6 @@
 import useClimaProvider from '../hooks/useClimaProvider'
 import FondoBlur from './FondoBlur'
-import { HumedadIcono, TemperaturaIcono, UbicacionIcono } from './Iconos'
+import { SolNubes } from './Iconos'
 
 const Resultados = () => {
     // const { clima, noCabeContenido } = useClimaProvider()
@@ -8,7 +8,7 @@ const Resultados = () => {
     // const Icono = icono
 
     return (
-        <h1>a</h1>
+        <h1>HOLA</h1>
         // <FondoBlur
         //     className={
         //         !noCabeContenido

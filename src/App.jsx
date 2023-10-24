@@ -3,6 +3,8 @@ import useClimaProvider from './hooks/useClimaProvider'
 import Formulario from './components/Formulario'
 import Resultados from './components/Resultados'
 import NoDatos from './components/NoDatos'
+import FondoBlur from './components/FondoBlur'
+import { Humedad, LLuvia, LluviaLigera, Luna, LunaNubes, Nieve, Otros, Presion, Rayos, Sensacion, Sol, SolNubes, Viento } from './components/Iconos'
 
 function App () {
     const { infoError, infoClima } = useClimaProvider()

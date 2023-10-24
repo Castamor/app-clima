@@ -1,4 +1,4 @@
-import { SolIcono, SolNubes, LloviznaIcono, LLuviaIcono, LunaIcono, LunaNubes, NieveIcono, TormentaIcono, VientoIcono } from '../components/Iconos'
+import { Sol, Luna, LunaNubes, SolNubes, LLuvia, LluviaLigera, Rayos, Nieve, Otros } from '../components/Iconos'
 
 export const paises = [
     { id: 1, codigo: 'US', nombre: 'Estados Unidos', ciudades: ['Nueva York', 'Los Ángeles', 'Chicago', 'Houston', 'Miami'] },
@@ -44,13 +44,13 @@ export function generarAutocompletado () {
 }
 
 export const climas = [
-    { id: 'Thunderstorm', meteorologia: 'Tormenta', icono: TormentaIcono },
-    { id: 'Drizzle', meteorologia: 'Llovizna', icono: LloviznaIcono },
-    { id: 'Rain', meteorologia: 'LLuvia', icono: LLuviaIcono },
-    { id: 'Snow', meteorologia: 'Nieve', icono: NieveIcono },
-    { id: 'Atmosphere', meteorologia: 'Variado', icono: VientoIcono },
-    { id: 'ClearDay', meteorologia: 'Despejado', icono: SolIcono },
-    { id: 'ClearNight', meteorologia: 'Despejado', icono: LunaIcono },
+    { id: 'Thunderstorm', meteorologia: 'Tormenta', icono: Rayos },
+    { id: 'Drizzle', meteorologia: 'Llovizna', icono: LluviaLigera },
+    { id: 'Rain', meteorologia: 'LLuvia', icono: LLuvia },
+    { id: 'Snow', meteorologia: 'Nieve', icono: Nieve },
+    { id: 'Atmosphere', meteorologia: 'Variado', icono: Otros },
+    { id: 'ClearDay', meteorologia: 'Despejado', icono: Sol },
+    { id: 'ClearNight', meteorologia: 'Despejado', icono: Luna },
     { id: 'CloudsDay', meteorologia: 'Nublado', icono: SolNubes },
     { id: 'CloudsNight', meteorologia: 'Nublado', icono: LunaNubes }
 ]
