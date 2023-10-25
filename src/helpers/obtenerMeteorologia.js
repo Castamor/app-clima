@@ -18,7 +18,14 @@ export const obtenerMeteorologia = (idIcono, nombreClima, cielo) => {
         ? 'Atmosphere'
         : nombreClima
 
-    const { icono, meteorologia } = climas.filter(clima => clima.id === nombreClima)[0]
+    const clima = climas.filter(clima => clima.id === nombreClima)[0]
+
+    if (!clima) {
+        const { icono, meteorologia } = climas.filter(clima => clima.id === 'Atmosphere')[0]
+        return { icono, meteorologia }
+    }
+
+    const { icono, meteorologia } = clima
 
     return { icono, meteorologia }
 }

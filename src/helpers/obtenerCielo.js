@@ -1,25 +1,54 @@
 import { ciclos } from '../data'
 
-export const obtenerCielo = (horaActual, amanecer, atardecer) => {
-    const hora = new Date(horaActual * 1000).getHours()
-    const horaAmanecer = new Date(amanecer * 1000).getHours()
-    const horaAtardecer = new Date(atardecer * 1000).getHours()
+export const obtenerCielo = (hora, amanecer, atardecer, zonaHoraria) => {
+    const obtenerPeriodo = (hora) => hora >= 12 ? 'p.m.' : 'a.m.'
+    const formato12hrs = (hora) => {
+        if (hora > 12) return hora - 12
+        if (hora === 0) return 12
+        return hora
+    }
+    const formatearMinuto = (minuto) => minuto < 10 ? ('0' + minuto) : minuto
 
-    const margen = 1 // 1 hora de margen
+    const textoHora = (hora, minutos) => `${formato12hrs(hora)}:${formatearMinuto(minutos)} ${obtenerPeriodo(hora)}`
+
+    const margenHoras = Math.floor(zonaHoraria / 3600)
+    const utcHora = new Date().getUTCHours()
+
+    let horaActual = (utcHora + margenHoras) % 24
+    if (horaActual < 0) {
+        horaActual += 24
+    }
+    const minutosActual = new Date().getUTCMinutes()
+    const txtHora = textoHora(horaActual, minutosActual)
+
+    const horaAmanecerMala = new Date(amanecer * 1000).getHours() + 1
+    const horaAmanecer = (utcHora + margenHoras + horaAmanecerMala) % 25
+    const minutosAmanecer = new Date(amanecer * 1000).getMinutes()
+    const txtAmanecer = textoHora(horaAmanecer, minutosAmanecer)
+
+    const horaAtardecerMala = new Date(atardecer * 1000).getHours()
+    const horaAtardecer = (utcHora + margenHoras + horaAtardecerMala) % 25
+    const minutosAtardecer = new Date(atardecer * 1000).getMinutes()
+    const txtAtardecer = textoHora(horaAtardecer, minutosAtardecer)
+
+    const margen = 0.5 // 1 hora de margen
+    let cielo
 
     if (
-        (hora >= horaAmanecer - margen) && (hora <= horaAmanecer + margen)
-    ) return ciclos.amanecer
+        (horaActual >= horaAmanecer - margen) && (horaActual <= horaAmanecer + margen)
+    ) cielo = ciclos.amanecer
 
     if (
-        (hora >= horaAmanecer + margen) && (hora <= horaAtardecer - margen)
-    ) return ciclos.dia
+        (horaActual >= horaAmanecer + margen) && (horaActual <= horaAtardecer - margen)
+    ) cielo = ciclos.dia
 
     if (
-        (hora >= horaAtardecer - margen) && (hora <= horaAtardecer + margen)
-    ) return ciclos.atardecer
+        (horaActual >= horaAtardecer - margen) && (horaActual <= horaAtardecer + margen)
+    ) cielo = ciclos.atardecer
 
     if (
-        (hora >= horaAtardecer + margen) || (hora <= horaAmanecer - margen)
-    ) return ciclos.noche
+        (horaActual >= horaAtardecer + margen) || (horaActual <= horaAmanecer - margen)
+    ) cielo = ciclos.noche
+
+    return { cielo, txtHora, txtAmanecer, txtAtardecer }
 }

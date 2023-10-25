@@ -3,22 +3,27 @@ import { obtenerDia } from '../helpers/obtenerDia'
 import { obtenerMeteorologia } from '../helpers/obtenerMeteorologia.js'
 
 export const guardarInformacion = ({ respuesta, setInfoClima }) => {
-    const { estado, climaActual, climaPrevisto } = respuesta
+    const { estado, infoClimaActual, infoClimaPrevisto } = respuesta
 
     // Extraer información
-    const { dt: horaActual, name: ciudad } = climaActual
-    const { sunrise: amanecer, sunset: atardecer } = climaActual.sys
-    const { temp, temp_max, temp_min, feels_like: sensacion, humidity: humedad, pressure: presion } = climaActual.main
-    const { description: descripcion, main: nombreClima, icon: idIcono } = climaActual.weather[0]
-    const { speed: velocidadViento } = climaActual.wind
+    const { dt: horaActual, name: ciudad, timezone: zonaHoraria } = infoClimaActual
+    const { sunrise: amanecer, sunset: atardecer } = infoClimaActual.sys
+    const { temp, temp_max, temp_min, feels_like: sensacion, humidity: humedad, pressure: presion } = infoClimaActual.main
+    const { description: descripcion, main: nombreClima, icon: idIcono } = infoClimaActual.weather[0]
+    const { speed: velocidadViento } = infoClimaActual.wind
 
-    const cielo = obtenerCielo(horaActual, amanecer, atardecer)
+    const { cielo, txtHora, txtAmanecer, txtAtardecer } = obtenerCielo(horaActual, amanecer, atardecer, zonaHoraria)
     const { icono, meteorologia } = obtenerMeteorologia(idIcono, nombreClima, cielo)
 
-    const infoClimaActual = {
+    const climaActual = {
         ciudad,
         estado,
-        cielo,
+        horas: {
+            cielo,
+            actual: txtHora,
+            amanecer: txtAmanecer,
+            atardecer: txtAtardecer
+        },
         temp: Math.round(temp),
         temp_min: Math.round(temp_min),
         temp_max: Math.round(temp_max),
@@ -31,7 +36,7 @@ export const guardarInformacion = ({ respuesta, setInfoClima }) => {
         descripcion
     }
 
-    const infoDiasPrevistos = climaPrevisto.list.filter((_, index) => (index + 1) % 8 === 0).map(datos => {
+    const climaPrevisto = infoClimaPrevisto.list.filter((_, index) => (index + 1) % 8 === 0).map(datos => {
         const { dt } = datos
         const { temp } = datos.main
         const { icon, main } = datos.weather[0]
@@ -48,8 +53,8 @@ export const guardarInformacion = ({ respuesta, setInfoClima }) => {
     })
 
     setInfoClima({
-        infoClimaActual,
-        infoDiasPrevistos,
+        climaActual,
+        climaPrevisto,
         contenido: true
     })
 }
