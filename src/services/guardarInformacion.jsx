@@ -6,13 +6,13 @@ export const guardarInformacion = ({ respuesta, setInfoClima }) => {
     const { estado, infoClimaActual, infoClimaPrevisto } = respuesta
 
     // Extraer información
-    const { dt: horaActual, name: ciudad, timezone: zonaHoraria } = infoClimaActual
+    const { name: ciudad, timezone: zonaHoraria } = infoClimaActual
     const { sunrise: amanecer, sunset: atardecer } = infoClimaActual.sys
     const { temp, temp_max, temp_min, feels_like: sensacion, humidity: humedad, pressure: presion } = infoClimaActual.main
     const { description: descripcion, main: nombreClima, icon: idIcono } = infoClimaActual.weather[0]
     const { speed: velocidadViento } = infoClimaActual.wind
 
-    const { cielo, txtHora, txtAmanecer, txtAtardecer } = obtenerCielo(horaActual, amanecer, atardecer, zonaHoraria)
+    const { cielo, txtHora, txtAmanecer, txtAtardecer } = obtenerCielo(amanecer, atardecer, zonaHoraria)
     const { icono, meteorologia } = obtenerMeteorologia(idIcono, nombreClima, cielo)
 
     const climaActual = {

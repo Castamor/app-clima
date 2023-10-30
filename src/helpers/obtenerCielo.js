@@ -1,6 +1,6 @@
 import { ciclos } from '../data'
 
-export const obtenerCielo = (hora, amanecer, atardecer, zonaHoraria) => {
+export const obtenerCielo = (amanecer, atardecer, zonaHoraria) => {
     const obtenerPeriodo = (hora) => hora >= 12 ? 'p.m.' : 'a.m.'
     const formato12hrs = (hora) => {
         if (hora > 12) return hora - 12
@@ -21,17 +21,15 @@ export const obtenerCielo = (hora, amanecer, atardecer, zonaHoraria) => {
     const minutosActual = new Date().getUTCMinutes()
     const txtHora = textoHora(horaActual, minutosActual)
 
-    const horaAmanecerMala = new Date(amanecer * 1000).getHours() + 1
-    const horaAmanecer = (utcHora + margenHoras + horaAmanecerMala) % 25
+    const horaAmanecer = 7
     const minutosAmanecer = new Date(amanecer * 1000).getMinutes()
     const txtAmanecer = textoHora(horaAmanecer, minutosAmanecer)
 
-    const horaAtardecerMala = new Date(atardecer * 1000).getHours()
-    const horaAtardecer = (utcHora + margenHoras + horaAtardecerMala) % 25
+    const horaAtardecer = 18
     const minutosAtardecer = new Date(atardecer * 1000).getMinutes()
     const txtAtardecer = textoHora(horaAtardecer, minutosAtardecer)
 
-    const margen = 0.5 // 1 hora de margen
+    const margen = 0.5
     let cielo
 
     if (
