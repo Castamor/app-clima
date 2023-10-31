@@ -1,11 +1,14 @@
+import { useEffect, useState } from 'react'
 import useClimaProvider from '../hooks/useClimaProvider'
+
+import ContenedorIcono from './ContenedorIcono'
+import Item from './Item'
 import FondoBlur from './FondoBlur'
+import { Humedad, Presion, SalidaSol, Sensacion, Viento } from './Iconos'
+
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
-import { Humedad, Presion, SalidaSol, Sensacion, Viento } from './Iconos'
-import Item from './Item'
-import { useEffect, useState } from 'react'
-import ContenedorIcono from './ContenedorIcono'
+import ItemDinamico from './ItemDinamico'
 
 const Resultados = () => {
     const { infoClima } = useClimaProvider()
@@ -14,11 +17,6 @@ const Resultados = () => {
     const { climaPrevisto } = infoClima
 
     const { cielo, actual, amanecer, atardecer } = horas
-
-    const condiciones = {
-        cielo,
-        meteorologia
-    }
 
     const formatearTexto = txt => txt.charAt(0).toUpperCase() + txt.slice(1)
     const generarId = () => Math.random().toString(36).substring(2) + Date.now().toString(36)
@@ -61,9 +59,7 @@ const Resultados = () => {
                 </FondoBlur>
 
                 <div className='w-[40%] sm:w-auto grid grid-rows-2 gap-2'>
-                    <FondoBlur>
-                        <p>MUNDO</p>
-                    </FondoBlur>
+                    <ItemDinamico cielo={cielo} meteorologia={meteorologia} />
 
                     <Item
                         Icono={SalidaSol}
