@@ -24,16 +24,20 @@ export const guardarInformacion = ({ respuesta, setInfoClima }) => {
             amanecer: txtAmanecer,
             atardecer: txtAtardecer
         },
-        temp: Math.round(temp),
-        temp_min: Math.round(temp_min),
-        temp_max: Math.round(temp_max),
-        sensacion: Math.round(sensacion),
-        humedad,
-        presion,
-        velocidadViento,
-        icono,
-        meteorologia,
-        descripcion
+        temperaturas: {
+            temp: Math.round(temp),
+            temp_min: Math.round(temp_min),
+            temp_max: Math.round(temp_max)
+        },
+        condiciones: {
+            icono,
+            meteorologia,
+            descripcion,
+            sensacion: Math.round(sensacion),
+            humedad,
+            presion,
+            velocidadViento
+        }
     }
 
     const climaPrevisto = infoClimaPrevisto.list.filter((_, index) => (index + 1) % 8 === 0).map(datos => {

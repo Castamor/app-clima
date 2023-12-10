@@ -1,14 +1,15 @@
-import { ciclos, climas } from '../data'
+import { climas } from '../data'
+import { CICLOS } from '../data/constantes'
 
 export const obtenerMeteorologia = (idIcono, nombreClima, cielo) => {
     if (nombreClima === 'Clear') {
-        cielo === ciclos.noche
+        cielo === CICLOS.noche
             ? nombreClima = 'ClearNight'
             : nombreClima = 'ClearDay'
     }
 
     if (nombreClima === 'Clouds') {
-        cielo === ciclos.noche
+        cielo === CICLOS.noche
             ? nombreClima = 'CloudsNight'
             : nombreClima = 'CloudsDay'
     }

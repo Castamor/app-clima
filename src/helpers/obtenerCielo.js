@@ -1,4 +1,4 @@
-import { ciclos } from '../data'
+import { CICLOS } from '../data/constantes'
 
 export const obtenerCielo = (amanecer, atardecer, zonaHoraria) => {
     const obtenerPeriodo = (hora) => hora >= 12 ? 'p.m.' : 'a.m.'
@@ -21,32 +21,36 @@ export const obtenerCielo = (amanecer, atardecer, zonaHoraria) => {
     const minutosActual = new Date().getUTCMinutes()
     const txtHora = textoHora(horaActual, minutosActual)
 
-    const horaAmanecer = 7
+    console.log('amanecer', amanecer)
+    console.log('atardecer', atardecer)
+    console.log('zonaHoraria', zonaHoraria)
+
+    const horaAmanecer = 6
     const minutosAmanecer = new Date(amanecer * 1000).getMinutes()
     const txtAmanecer = textoHora(horaAmanecer, minutosAmanecer)
 
-    const horaAtardecer = 18
+    const horaAtardecer = 17
     const minutosAtardecer = new Date(atardecer * 1000).getMinutes()
     const txtAtardecer = textoHora(horaAtardecer, minutosAtardecer)
 
-    const margen = 0.5
+    const margen = 1
     let cielo
 
     if (
         (horaActual >= horaAmanecer - margen) && (horaActual <= horaAmanecer + margen)
-    ) cielo = ciclos.amanecer
+    ) cielo = CICLOS.amanecer
 
     if (
         (horaActual >= horaAmanecer + margen) && (horaActual <= horaAtardecer - margen)
-    ) cielo = ciclos.dia
+    ) cielo = CICLOS.dia
 
     if (
         (horaActual >= horaAtardecer - margen) && (horaActual <= horaAtardecer + margen)
-    ) cielo = ciclos.atardecer
+    ) cielo = CICLOS.atardecer
 
     if (
         (horaActual >= horaAtardecer + margen) || (horaActual <= horaAmanecer - margen)
-    ) cielo = ciclos.noche
+    ) cielo = CICLOS.noche
 
     return { cielo, txtHora, txtAmanecer, txtAtardecer }
 }

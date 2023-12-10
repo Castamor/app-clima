@@ -1,4 +1,5 @@
 import { Sol, Luna, LunaNubes, SolNubes, LLuvia, LluviaLigera, Rayos, Nieve, Otros } from '../components/Iconos'
+import { METEOROLOGIAS } from './constantes'
 
 export const paises = [
     { id: 1, codigo: 'US', nombre: 'Estados Unidos', ciudades: ['Nueva York', 'Los Ángeles', 'Chicago', 'Houston', 'Miami'] },
@@ -44,22 +45,25 @@ export function generarAutocompletado () {
 }
 
 export const climas = [
-    { id: 'Thunderstorm', meteorologia: 'Tormenta', icono: Rayos },
-    { id: 'Drizzle', meteorologia: 'Llovizna', icono: LluviaLigera },
-    { id: 'Rain', meteorologia: 'LLuvia', icono: LLuvia },
-    { id: 'Snow', meteorologia: 'Nieve', icono: Nieve },
-    { id: 'Atmosphere', meteorologia: 'Variado', icono: Otros },
-    { id: 'ClearDay', meteorologia: 'Despejado', icono: Sol },
-    { id: 'ClearNight', meteorologia: 'Despejado', icono: Luna },
-    { id: 'CloudsDay', meteorologia: 'Nublado', icono: SolNubes },
-    { id: 'CloudsNight', meteorologia: 'Nublado', icono: LunaNubes }
+    { id: 'Drizzle', meteorologia: METEOROLOGIAS.llovizna, icono: LluviaLigera },
+    { id: 'Rain', meteorologia: METEOROLOGIAS.lluvia, icono: LLuvia },
+    { id: 'Thunderstorm', meteorologia: METEOROLOGIAS.tormenta, icono: Rayos },
+    { id: 'Snow', meteorologia: METEOROLOGIAS.nieve, icono: Nieve },
+    { id: 'Atmosphere', meteorologia: METEOROLOGIAS.variado, icono: Otros },
+    { id: 'ClearDay', meteorologia: METEOROLOGIAS.despejado, icono: Sol },
+    { id: 'ClearNight', meteorologia: METEOROLOGIAS.despejado, icono: Luna },
+    { id: 'CloudsDay', meteorologia: METEOROLOGIAS.nublado, icono: SolNubes },
+    { id: 'CloudsNight', meteorologia: METEOROLOGIAS.nublado, icono: LunaNubes }
 ]
 
-export const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
-
-export const ciclos = {
-    amanecer: 'Amaneciendo',
-    dia: 'Día',
-    atardecer: 'Atardeciendo',
-    noche: 'Noche'
+export const colores = {
+    amanecer: {
+        nombre: 'Amaneciendo',
+        cielo: '#21678f',
+        icono: Sol,
+        posicionIcono: 'mb-2'
+    },
+    dia: '#7dd3fc',
+    atardecer: '#a42b2b',
+    noche: '#152a66'
 }

@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 :root {
-    --error: theme(colors.red.600);
     --azul: theme(colors.blue.500);
-    --amanecer: rgb(33,103,143);
-    --dia: rgb(125,211,252);
-    --atardecer: rgb(164,43,43);
-    --noche: rgb(21,42,102);
+    --amanecer: #21678f;
+    --dia: #7dd3fc;
+    --atardecer: #a42b2b;
+    --noche: #152a66;
 }
 
 body {
@@ -100,7 +99,7 @@ html {
 }
 
 .animacionIzqDer {
-    animation: izqDer 10s linear infinite, fadeIn 1s linear;
+    animation: izqDer 10s linear infinite;
 }
 
 @keyframes izqDer {
@@ -121,7 +120,7 @@ html {
     }
 }
 
-.satelite {
+.fadeIn {
     animation: fadeIn 1s linear;
 }
 
@@ -147,41 +146,45 @@ html {
 }
 
 .brilloEstrellasv1 {
-    animation: estrellas 5s linear infinite, fadeIn 1s linear;
+    animation: estrellas 5s linear infinite;
 }
 
 .brilloEstrellasv2 {
-    animation: estrellas 8s linear infinite, fadeIn 1s linear;
+    animation: estrellas 8s linear infinite;
 }
 
 .brilloEstrellasv3 {
-    animation: estrellas 3s linear infinite, fadeIn 1s linear;
+    animation: estrellas 3s linear infinite;
 }
 
 @keyframes estrellas {
 
     from {
-        filter: brightness(.8);
+        filter: brightness(.5);
         transform: scale(1);
     }
     
     50% {
-        filter: brightness(1.5);
+        filter: brightness(1);
         transform: scale(1.1);
     }
     
     to {
         transform: scale(1);
-        filter: brightness(.8);
+        filter: brightness(.5);
     }
 }
 
 .nubesMovimiento {
-    animation: nubes 4s linear alternate infinite, fadeIn 1s linear;
+    animation: nubes 4s linear alternate infinite;
 }
 
 .nubesMovimientov2 {
-    animation: nubes 6s linear alternate-reverse infinite, fadeIn 1s linear;
+    animation: nubes 6s linear alternate-reverse infinite;
+}
+
+.nubesMovimientov3 {
+    animation: nubes 8s linear alternate-reverse infinite;
 }
 
 @keyframes nubes {
@@ -195,18 +198,58 @@ html {
     }
 }
 
+@keyframes niebla {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(5%);
+    }
+}
+
+.niebla {
+    animation: niebla 10s linear alternate-reverse infinite;
+}
+
+.nieblav2 {
+    animation: niebla 12s linear alternate-reverse infinite;
+}
+
+.nieblav3 {
+    animation: niebla 14s linear alternate-reverse infinite;
+}
+
 .pajaros {
     animation: pajaros 2s alternate infinite;
 }
-
 
 .pajarosv2 {
     animation: pajaros 3s alternate-reverse infinite;
 }
 
+.pajarosv3 {
+    animation: pajaros 4s alternate-reverse infinite;
+}
+
 @keyframes pajaros {
     to {
-        transform: rotate(-15deg);
+        transform: rotate(-12deg);
+    }
+}
+
+@keyframes popUp {
+    from {
+        transform: scale(.95);
+    }
+
+    50% {
+        transform: scale(1.0);
+    }
+
+    to {
+        transform: scale(1);
     }
 }
 

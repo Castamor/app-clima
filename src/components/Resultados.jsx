@@ -8,15 +8,17 @@ import { Humedad, Presion, SalidaSol, Sensacion, Viento } from './Iconos'
 
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
-import ItemDinamico from './ItemDinamico'
+import ItemDinamico from './ItemDinamico/ItemDinamico'
 
 const Resultados = () => {
     const { infoClima } = useClimaProvider()
 
-    const { ciudad, descripcion, estado, humedad, icono: Icono, meteorologia, presion, sensacion, temp, temp_min, temp_max, velocidadViento, horas } = infoClima.climaActual
-    const { climaPrevisto } = infoClima
+    const { climaActual, climaPrevisto } = infoClima
+    const { ciudad, estado, horas, temperaturas, condiciones } = climaActual
 
     const { cielo, actual, amanecer, atardecer } = horas
+    const { temp, temp_min, temp_max } = temperaturas
+    const { icono: Icono, meteorologia, descripcion, sensacion, humedad, presion, velocidadViento } = condiciones
 
     const formatearTexto = txt => txt.charAt(0).toUpperCase() + txt.slice(1)
     const generarId = () => Math.random().toString(36).substring(2) + Date.now().toString(36)
@@ -30,6 +32,7 @@ const Resultados = () => {
         const anchoPantalla = window.innerWidth < 640
         setPantallaPeque(anchoPantalla)
     }
+
     return (
         <>
             <h2 className='mt-2 mb-1 font-medium'>Clima actual</h2>

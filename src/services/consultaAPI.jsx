@@ -1,5 +1,5 @@
 import { fetchAPI } from './fetch'
-import { NADA, VACIO } from '../constant/constantes'
+import { NADA, VACIO } from '../data/constantes'
 
 export const consultaAPI = async (ciudad, pais, setLoading) => {
     try {

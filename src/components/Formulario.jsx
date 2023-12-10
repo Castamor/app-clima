@@ -5,7 +5,7 @@ import { consultaAPI } from '../services/consultaAPI'
 import { guardarInformacion } from '../services/guardarInformacion'
 
 import { paises, generarAutocompletado } from '../data'
-import { NADA } from '../constant/constantes'
+import { NADA } from '../data/constantes'
 
 import { CgSearch } from 'react-icons/cg'
 
@@ -19,28 +19,12 @@ const Formulario = () => {
 
     useEffect(generarAutocompletado, [])
 
-    function vibrarInput () {
-        const input = document.querySelector('#ciudad')
-        const boton = document.querySelector('#botonFormulario')
-
-        input.classList.toggle('shake-horizontal')
-        boton.classList.toggle('shake-horizontal')
-
-        setTimeout(() => {
-            input.classList.toggle('shake-horizontal')
-            boton.classList.toggle('shake-horizontal')
-        }, 2500)
-    }
-
     const handleSubmit = async e => {
         e.preventDefault()
 
         const ciudad = e.target[0].value.trim()
 
-        if (ciudad === NADA) {
-            vibrarInput()
-            return
-        }
+        if (ciudad === NADA) return
 
         const codigo = paises.filter(pais => (pais.ciudades).includes(ciudad))[0]?.codigo
 
@@ -72,7 +56,7 @@ const Formulario = () => {
                     placeholder='Escribe una ciudad'
                     className="w-full bg-white/10 p-3 rounded-xl focus-visible:outline-none placeholder:text-sm font-semibold border-b-2 border-r-2 border-white/5"
                 />
-                {loading && <div className='absolute top-4 bottom-0 right-10 loading'></div>}
+                {loading && <div className='absolute top-[1.15rem] bottom-0 right-10 loading'></div>}
 
                 <button id="botonFormulario" type="submit" title='Buscar clima' className='absolute right-0 top-0 bottom-0 text-lg pl-2.5 pr-2.5 rounded-tr-xl rounded-br-xl focus-visible:outline-none'> <CgSearch/> </button>
             </div>
