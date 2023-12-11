@@ -56,7 +56,7 @@ const Formulario = () => {
                     placeholder='Escribe una ciudad'
                     className="w-full bg-white/10 p-3 rounded-xl focus-visible:outline-none placeholder:text-sm font-semibold border-b-2 border-r-2 border-white/5"
                 />
-                {loading && <div className='absolute top-[1.15rem] bottom-0 right-10 loading'></div>}
+                {loading && <div className='absolute top-[1.05rem] bottom-0 right-10 loading'></div>}
 
                 <button id="botonFormulario" type="submit" title='Buscar clima' className='absolute right-0 top-0 bottom-0 text-lg pl-2.5 pr-2.5 rounded-tr-xl rounded-br-xl focus-visible:outline-none'> <CgSearch/> </button>
             </div>

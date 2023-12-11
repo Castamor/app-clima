@@ -1,7 +1,7 @@
 import { CICLOS } from '../data/constantes'
 
 export const obtenerCielo = (amanecer, atardecer, zonaHoraria) => {
-    const obtenerPeriodo = (hora) => hora >= 12 ? 'p.m.' : 'a.m.'
+    const obtenerPeriodo = (hora) => hora >= 12 ? 'pm' : 'am'
     const formato12hrs = (hora) => {
         if (hora > 12) return hora - 12
         if (hora === 0) return 12

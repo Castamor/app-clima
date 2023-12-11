@@ -6,41 +6,32 @@ import Pajaros from './Pajaros'
 import Satelite from './Satelite'
 import Niebla from './Niebla'
 
-const colores = {
-    sol: 'text-[#ffc95e]',
-    luna: 'text-[#8b8cb0]'
-}
-
 const estructura = {
     cielos: {
         [CICLOS.amanecer]: {
             satelite: {
-                color: colores.luna,
-                posicion: '-bottom-[1.75rem] -right-[1rem]'
+                posicion: '-bottom-[15%] -right-[12.5%] sm:-bottom-[17.5%] sm:-right-[10%]'
             },
             colorCielo: 'bg-[#21678f]',
             haySol: false
         },
         [CICLOS.dia]: {
             satelite: {
-                color: colores.sol,
-                posicion: '-top-[1.25rem] -right-[1.25rem]'
+                posicion: '-top-[12.5%] -right-[12.5%]'
             },
             colorCielo: 'bg-[#7dd3fc]',
             haySol: true
         },
         [CICLOS.atardecer]: {
             satelite: {
-                color: colores.sol,
-                posicion: '-bottom-[1.75rem] -left-[1rem]'
+                posicion: '-bottom-[17.5%] -left-[10%]'
             },
             colorCielo: 'bg-[#a42b2b]',
             haySol: true
         },
         [CICLOS.noche]: {
             satelite: {
-                color: colores.luna,
-                posicion: '-top-[1.25rem] -right-[1.25rem]'
+                posicion: '-top-[12.5%] -right-[12.5%]'
             },
             colorCielo: 'bg-[#132f70]',
             haySol: false
@@ -71,18 +62,18 @@ const estructura = {
 }
 
 const ItemDinamico = ({ cielo, meteorologia }) => {
+    cielo = CICLOS.dia
+    meteorologia = METEOROLOGIAS.variado
+    const hayClimaDesconocido = meteorologia === METEOROLOGIAS.variado
+
     const [haySol, setHaySol] = useState(true)
     const [hayNubes, setHayNubes] = useState(false)
     const [colorCielo, setColorCielo] = useState('')
-    const [colorSatelite, setColorSatelite] = useState('')
     const [posicionSatelite, setPosicionSatelite] = useState('')
     const [colorNubesPrimarias, setColorNubesPrimarias] = useState('')
     const [colorNubesSecundarias, setColorNubesSecundarias] = useState('')
 
-    const hayClimaDesconocido = meteorologia === METEOROLOGIAS.variado
-
     useEffect(() => {
-        setColorSatelite(estructura.cielos[cielo].satelite.color)
         setPosicionSatelite(estructura.cielos[cielo].satelite.posicion)
 
         if (estructura.cielos[cielo]) {
@@ -106,24 +97,24 @@ const ItemDinamico = ({ cielo, meteorologia }) => {
     }, [meteorologia])
 
     return (
-        <section className={`${colorCielo} rounded-xl p-3 relative overflow-hidden fadeIn`}>
+        <section className={`${colorCielo} rounded-xl p-3 relative overflow-hidden fadeIn border-b-2 border-r-2 border-white/5`}>
             {hayClimaDesconocido
                 ? <Niebla />
                 : <>
-                    <Satelite color={colorSatelite} posicion={posicionSatelite} />
+                    <Satelite haySol={haySol} posicion={posicionSatelite} />
 
                     {haySol
-                        ? <Pajaros />
+                        ? <Pajaros/>
                         : <Estrellas meteorologia={meteorologia}/>
                     }
 
                     {hayNubes &&
-                    <Nublado
-                        ciclo={cielo}
-                        meteorologia={meteorologia}
-                        nubesPrimarias={colorNubesPrimarias}
-                        nubesSecundarias={colorNubesSecundarias}
-                    />
+                        <Nublado
+                            ciclo={cielo}
+                            meteorologia={meteorologia}
+                            colorPrimarias={colorNubesPrimarias}
+                            colorSecundarias={colorNubesSecundarias}
+                        />
                     }
                 </>
             }

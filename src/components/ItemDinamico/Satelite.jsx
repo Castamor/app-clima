@@ -1,13 +1,11 @@
 import ContenedorIcono from '../ContenedorIcono'
-import { FondoSatelite } from '../Iconos'
+import { FondoSol, FondoLuna } from '../Iconos'
 
-const Satelite = ({ color, posicion }) => {
+const Satelite = ({ haySol, posicion }) => {
     return (
-        <>
-            <ContenedorIcono width='w-[4rem] sm:w-[30%]' className={`absolute ${posicion} ${color}`}>
-                <FondoSatelite />
-            </ContenedorIcono>
-        </>
+        <ContenedorIcono width='w-[40%] sm:w-[30%]' className={`absolute ${posicion}`}>
+            {haySol ? <FondoSol /> : <FondoLuna />}
+        </ContenedorIcono>
     )
 }
 

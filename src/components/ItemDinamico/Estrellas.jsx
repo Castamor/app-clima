@@ -5,63 +5,40 @@ import { FondoEstrellas, FondoEstrellasLargas, FondoEstrellitas } from '../Icono
 const Estrellas = ({ meteorologia }) => {
     const hayCieloDespejado = meteorologia === METEOROLOGIAS.despejado
 
+    const classNameEstrellitas = !hayCieloDespejado
+        ? 'top-[52.5%] right-[15%] sm:top-[42.5%] sm:right-[22.5%]'
+        : 'top-[22.5%] left-[27.5%] sm:top-[20%] sm:left-[30%]'
+
+    const classNameEstrellas = !hayCieloDespejado
+        ? 'top-[32.5%] left-[27.5%] sm:top-[27.5%] sm:left-[25%]'
+        : 'bottom-[35%] right-[15%] sm:right-[20%]'
+
+    const classNameEstrellasLargas = !hayCieloDespejado
+        ? 'bottom-[15%] left-[35%] sm:left-[25%]'
+        : 'bottom-[15%] left-[20%]'
+
     return (
         <>
-
             <ContenedorIcono
-                width={`${hayCieloDespejado ? 'w-[2%]' : 'w-[5%]'}`}
-                className={`absolute ${hayCieloDespejado ? 'top-[50.5%] left-[40%]' : 'top-[30%] left-[25%] sm:top-[27.5%] sm:left-[25%]'} opacity-40 brilloEstrellasv3`}
-            >
-                <FondoEstrellas />
-            </ContenedorIcono>
-
-            <ContenedorIcono
-                width={'w-[6%]'}
-                className={`absolute ${hayCieloDespejado ? 'bottom-[5%] right-[30%]' : 'top-[52.5%] right-[17.5%] sm:top-[42.5%] sm:right-[22.5%]'} opacity-40 brilloEstrellasv1`}
+                width={'w-[9%] sm:w-[7%]'}
+                className={`absolute opacity-50 brilloEstrellasv1 ${classNameEstrellitas}`}
             >
                 <FondoEstrellitas />
             </ContenedorIcono>
 
             <ContenedorIcono
-                width={'w-[9%]'}
-                className={`absolute ${hayCieloDespejado ? '-bottom-[2.5%] left-[15%]' : 'bottom-[12.5%] left-[27.5%] sm:left-[25%]'} opacity-40 brilloEstrellasv2`}
+                width={'w-[8%] sm:w-[6%]'}
+                className={`absolute opacity-40 brilloEstrellasv3 ${classNameEstrellas}`}
+            >
+                <FondoEstrellas />
+            </ContenedorIcono>
+
+            <ContenedorIcono
+                width={'w-[12%] sm:w-[9%]'}
+                className={`absolute opacity-50 brilloEstrellasv2 ${classNameEstrellasLargas}`}
             >
                 <FondoEstrellasLargas />
             </ContenedorIcono>
-
-            {hayCieloDespejado &&
-                <>
-                    <ContenedorIcono width={'w-[1.5%]'} className={'absolute bottom-[22.5%] left-[2.5%] opacity-40 brilloEstrellasv1'}>
-                        <FondoEstrellas />
-                    </ContenedorIcono>
-
-                    <ContenedorIcono width={'w-[1.75%]'} className={'absolute top-[1%] left-[32.5%] opacity-40 brilloEstrellasv2'}>
-                        <FondoEstrellas />
-                    </ContenedorIcono>
-
-                    <ContenedorIcono width={'w-[1.5%]'} className={'absolute top-[50%] right-[1%] opacity-40 brilloEstrellasv3'}>
-                        <FondoEstrellas />
-                    </ContenedorIcono>
-
-                    <ContenedorIcono width={'w-[9%]'} className={'absolute top-[42.5%] right-[25%] opacity-40 brilloEstrellasv2'}>
-                        <FondoEstrellasLargas />
-                    </ContenedorIcono>
-
-                    <ContenedorIcono width={'w-[9%]'} className={'absolute -top-[2.5%] -left-[1%] opacity-40 brilloEstrellasv3'}>
-                        <FondoEstrellasLargas />
-                    </ContenedorIcono>
-
-                    <ContenedorIcono width={'w-[5%]'} className={'absolute top-[37.5%] left-[15%] opacity-40 brilloEstrellasv1'}>
-                        <FondoEstrellitas />
-                    </ContenedorIcono>
-
-                    <ContenedorIcono width={'w-[5%]'} className={'absolute top-[2.5%] right-[25%] opacity-40 brilloEstrellasv2'}>
-                        <FondoEstrellitas />
-                    </ContenedorIcono>
-
-                </>
-            }
-
         </>
     )
 }

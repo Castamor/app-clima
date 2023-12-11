@@ -29,13 +29,13 @@ const Niebla = () => {
             </ContenedorIcono>
 
             <ContenedorIcono
-                width={'w-36 sm:w-56'}
-                className={'absolute top-8 -right-10 nieblav2'}>
+                width={'w-54 sm:w-56'}
+                className={'absolute top-10 -right-10 nieblav2'}>
                 <FondoNieblaGrande/>
             </ContenedorIcono>
 
             <ContenedorIcono
-                width={'w-36 sm:w-56'}
+                width={'w-40 sm:w-56'}
                 className={'absolute bottom-10 -left-16 niebla'}>
                 <FondoNieblaGrande/>
             </ContenedorIcono>
