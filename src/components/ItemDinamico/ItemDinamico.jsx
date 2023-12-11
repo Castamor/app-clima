@@ -62,8 +62,6 @@ const estructura = {
 }
 
 const ItemDinamico = ({ cielo, meteorologia }) => {
-    cielo = CICLOS.dia
-    meteorologia = METEOROLOGIAS.variado
     const hayClimaDesconocido = meteorologia === METEOROLOGIAS.variado
 
     const [haySol, setHaySol] = useState(true)
