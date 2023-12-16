@@ -1,8 +1,4 @@
-# React + Vite
+Página web hecha con React que permite la búsqueda de una ciudad para obtener información acerca de su clima, un plus de este proyecto es un cuadro dinámico que contiene muchas variaciones y se adapta dependiendo de las condiciones meteorológicas de la ciudad que se busca.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Formulario Página Principal](/public/formulario-pagina-princial.png)
+![Resultados](/public/resultados.png)
