@@ -2,7 +2,7 @@
 Esta es una página web que permite la búsqueda de una ciudad de cualquier parte del mundo, el objetivo es obtener información acerca del clima/meteorología de la ciudad e información relacionada a ello.
 
 ## Aprendizajes de este proyecto
-El próposito de este proyecto es agarrar experiencia con React al utilizar hooks como el de contextAPI, uso de customHooks para poder consumir el contexto y el uso de useEffects; Además de exponerme a retos como el de procesar distintos tipos de información proporcionados por la API (procesar fechas y sistemas métricos) y la optimización de los recursos utilizados como los logos y svg's; Aprender buenas prácticas al momento de hacer consultas a la API de manera eficiente y efectiva.
+El próposito de este proyecto es agarrar experiencia con React al utilizar hooks como el de contextAPI, uso de customHooks para poder consumir este contexto y el uso de useEffects; Además de exponerme a retos como el de procesar distintos tipos de información proporcionados por la API (procesar fechas y sistemas métricos) y la optimización de los recursos utilizados como los logos y svg's; Y aprender buenas prácticas al momento de hacer consultas a la API de manera eficiente y efectiva.
 
 ## Funcionamiento
 Funciona en base a un formulario muy sencillo que contiene un input en dónde únicamente se escribe el nombre de una ciudad, cuenta con validación para no hacer consultas vacías a la API, además de mostrar retroalimentación en caso de que lo introducido en el input no sea correcto (muestra un mensaje diciendo que no es necesario agregar el país o alguna información extra para así orientar al usuario a realizar búsquedas correctamente).
@@ -31,6 +31,7 @@ Hay cuatro variaciones respecto al cielo, y pueden ser:
 - Día
 - Atardecer
 - Noche
+
 Cada una afecta el color del cielo y también en base a eso se decide si se muestra el sol o la luna.
 
 Respecto a las variaciones de clima estas se basan en las propias meteorologías.
@@ -47,3 +48,5 @@ Se utilizaron técnologías como:
 - Eslint
 - PostCSS
 - Netlify
+
+###### README.md - Versión 4
