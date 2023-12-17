@@ -35,7 +35,7 @@ Hay cuatro variaciones respecto al cielo, y pueden ser:
 
 Cada una afecta el color del cielo y también en base a eso se decide si se muestra el sol o la luna.
 
-Hay siente variaciones respecto al clima, y pueden ser:
+Hay siete variaciones respecto a la meterología, y pueden ser:
 - Despejado
 - Nublado
 - Nieve
@@ -57,4 +57,4 @@ Se utilizaron tecnologías como:
 - PostCSS
 - Netlify
 
-###### README.md - Versión 6 (mejora en la claridad de información)
+###### README.md - Versión 7 (correcciones ortográficas)
